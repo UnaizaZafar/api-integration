@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
+
 export default function Home() {
   let [jsonTitle, setJsonTitle] = useState(null);
   useEffect(() => {
@@ -18,6 +19,8 @@ export default function Home() {
         {jsonTitle}
         {jsonTitle && jsonTitle.map((title) => <p>{title}</p>)}
         <Link href="/weather-api" className="border rounded-xl p-2"> Weather API </Link>
+        <Link href="/crud-operation" className="border rounded-xl p-2"> CRUD Operations </Link>
+
       </div>
     </>
   );
