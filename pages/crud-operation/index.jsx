@@ -120,7 +120,7 @@ const Index = () => {
                 onClick={(e) => {
                   handleSave(e);
                 }}
-                className="bg-blue-800 rounded-xl px-3 py-1  "
+                className="bg-blue-800 text-white rounded-xl px-3 py-1  "
               >
                 Save
               </button>
@@ -129,7 +129,7 @@ const Index = () => {
                 onClick={() => {
                   handleUpdate();
                 }}
-                className="bg-blue-800 rounded-xl px-3 py-1  "
+                className="bg-blue-800 text-white rounded-xl px-3 py-1  "
               >
                 Update
               </button>
@@ -138,7 +138,7 @@ const Index = () => {
               onClick={() => {
                 handleClear();
               }}
-              className="bg-red-800 rounded-xl px-3 py-1  "
+              className="bg-red-800 text-white rounded-xl px-3 py-1  "
             >
               Clear
             </button>
@@ -168,7 +168,7 @@ const Index = () => {
                     onClick={() => {
                       handleEdit(userData.id);
                     }}
-                    className="bg-blue-800 rounded-xl px-3 py-1  "
+                    className="bg-blue-800 text-white rounded-xl px-3 py-1  "
                   >
                     Edit
                   </button>
@@ -176,7 +176,7 @@ const Index = () => {
                     onClick={() => {
                       handleDelete(userData.id);
                     }}
-                    className="bg-red-800 rounded-xl px-3 py-1  "
+                    className="bg-red-800 text-white rounded-xl px-3 py-1  "
                   >
                     Delete
                   </button>
