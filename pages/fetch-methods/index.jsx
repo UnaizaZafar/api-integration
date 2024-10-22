@@ -42,7 +42,7 @@ const Index = () => {
   return (
     <>
       <div className="flex flex-col justify-center items-center p-10">
-        <h2 className="font-bold text-2xl">Fetch API GET Method</h2>
+        <h2 className="font-bold text-2xl">Fetch API GET & POST Method</h2>
 
         <table className="w-3/4  p-2">
           <thead className="border-b py-3">
