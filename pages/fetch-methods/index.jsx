@@ -120,7 +120,7 @@ const Index = () => {
               <td></td>
               <td>
                 <input
-                  className="border rounded-lg text-sm px-2 py-4 w-full"
+                  className="border rounded-lg text-sm px-2 py-3 w-full"
                   type="number"
                   value={newUserId}
                   onChange={(e) => setNewUserId(e.target.value)}
@@ -129,7 +129,7 @@ const Index = () => {
               </td>
               <td>
                 <input
-                  className="border rounded-lg text-sm px-2 py-4 w-full"
+                  className="border rounded-lg text-sm px-2 py-3 w-full"
                   type="text"
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
@@ -138,7 +138,7 @@ const Index = () => {
               </td>
               <td>
                 <input
-                  className="border rounded-lg text-sm px-2 py-4 w-full"
+                  className="border rounded-lg text-sm px-2 py-3 w-full"
                   type="text"
                   value={newBody}
                   onChange={(e) => setNewBody(e.target.value)}
@@ -149,14 +149,14 @@ const Index = () => {
                 <td>
                   {editingId ? (
                     <button
-                      className="bg-green-700 text-white w-full px-2 py-4 rounded-lg"
+                      className="bg-green-700 text-white w-full px-2 py-3 rounded-lg"
                       onClick={updateUser} // Call update when editing
                     >
                       Update Data
                     </button>
                   ) : (
                     <button
-                      className="bg-blue-700 text-white px-2 py-4 w-full rounded-lg"
+                      className="bg-blue-700 text-white px-2 py-3 w-full rounded-lg"
                       onClick={addUser} // Call add when not editing
                     >
                       Add Data
