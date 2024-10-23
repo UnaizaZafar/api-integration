@@ -51,12 +51,11 @@ const Index = () => {
     }
   };
   const updateUser = () => {
-    if (!editingId) return; 
+    if (!editingId) return;
     const updatedUser = {
       userId: newUserId,
       title: newTitle,
       body: newBody,
-      id: editingId,
     };
 
     fetch(`https://jsonplaceholder.typicode.com/posts/${editingId}`, {
@@ -74,7 +73,7 @@ const Index = () => {
           )
         );
         alert("Data Updated Successfully!");
-        clearForm(); 
+        clearForm();
       })
       .catch((error) => console.log("Error updating user:", error));
   };
@@ -83,13 +82,9 @@ const Index = () => {
     setNewUserId(0);
     setNewTitle("");
     setNewBody("");
-    setEditingId(null); 
+    setEditingId(null);
   };
-  const onChangeHandler = (key, value) => {
-    if (key === "userId") setNewUserId(value);
-    if (key === "title") setNewTitle(value);
-    if (key === "body") setNewBody(value);
-  };
+
   const deleteUser = (id) => {
     if (window.confirm("Are you sure you want to delete this row?")) {
       fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
@@ -106,7 +101,9 @@ const Index = () => {
   return (
     <>
       <div className="flex flex-col justify-center items-center p-10">
-        <h2 className="font-bold text-2xl">Fetch API GET, POST, PUT & DELETE Method</h2>
+        <h2 className="font-bold text-2xl">
+          Fetch API GET, POST, PUT & DELETE Method
+        </h2>
 
         <table className="w-3/4  p-2">
           <thead className="border-b py-3">
@@ -119,11 +116,11 @@ const Index = () => {
             </tr>
           </thead>
           <tbody>
-            <tr>
+            <tr className="sticky top-2">
               <td></td>
               <td>
                 <input
-                  className="border rounded-lg text-sm px-1 py-2 w-full"
+                  className="border rounded-lg text-sm px-2 py-4 w-full"
                   type="number"
                   value={newUserId}
                   onChange={(e) => setNewUserId(e.target.value)}
@@ -132,7 +129,7 @@ const Index = () => {
               </td>
               <td>
                 <input
-                  className="border rounded-lg text-sm px-1 py-2 w-full"
+                  className="border rounded-lg text-sm px-2 py-4 w-full"
                   type="text"
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
@@ -141,32 +138,32 @@ const Index = () => {
               </td>
               <td>
                 <input
-                  className="border rounded-lg text-sm px-1 py-2 w-full"
+                  className="border rounded-lg text-sm px-2 py-4 w-full"
                   type="text"
                   value={newBody}
                   onChange={(e) => setNewBody(e.target.value)}
                   placeholder="Enter Body Text"
                 />
               </td>
-              <td>
-                <td >
+              
+                <td>
                   {editingId ? (
                     <button
-                      className="bg-green-700 text-white  p-2 rounded-lg"
+                      className="bg-green-700 text-white w-full p-2 rounded-lg"
                       onClick={updateUser} // Call update when editing
                     >
                       Update Data
                     </button>
                   ) : (
                     <button
-                      className="bg-blue-700 text-white p-2 rounded-lg"
+                      className="bg-blue-700 text-white p-2 w-full rounded-lg"
                       onClick={addUser} // Call add when not editing
                     >
                       Add Data
                     </button>
                   )}
                 </td>
-              </td>
+              
             </tr>
             {userData.map((user, index) => (
               <tr key={index}>
