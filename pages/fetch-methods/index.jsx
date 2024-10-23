@@ -51,7 +51,7 @@ const Index = () => {
     }
   };
   const updateUser = () => {
-    if (!editingId) return; // Ensure that an ID is being edited
+    if (!editingId) return; 
     const updatedUser = {
       userId: newUserId,
       title: newTitle,
@@ -74,7 +74,7 @@ const Index = () => {
           )
         );
         alert("Data Updated Successfully!");
-        clearForm(); // Reset form after successful update
+        clearForm(); 
       })
       .catch((error) => console.log("Error updating user:", error));
   };
@@ -83,7 +83,7 @@ const Index = () => {
     setNewUserId(0);
     setNewTitle("");
     setNewBody("");
-    setEditingId(null); // Reset editing state
+    setEditingId(null); 
   };
   const onChangeHandler = (key, value) => {
     if (key === "userId") setNewUserId(value);
@@ -106,7 +106,7 @@ const Index = () => {
   return (
     <>
       <div className="flex flex-col justify-center items-center p-10">
-        <h2 className="font-bold text-2xl">Fetch API GET & POST Method</h2>
+        <h2 className="font-bold text-2xl">Fetch API GET, POST, PUT & DELETE Method</h2>
 
         <table className="w-3/4  p-2">
           <thead className="border-b py-3">
