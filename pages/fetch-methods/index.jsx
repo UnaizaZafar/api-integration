@@ -149,14 +149,14 @@ const Index = () => {
                 <td>
                   {editingId ? (
                     <button
-                      className="bg-green-700 text-white w-full p-2 rounded-lg"
+                      className="bg-green-700 text-white w-full px-2 py-4 rounded-lg"
                       onClick={updateUser} // Call update when editing
                     >
                       Update Data
                     </button>
                   ) : (
                     <button
-                      className="bg-blue-700 text-white p-2 w-full rounded-lg"
+                      className="bg-blue-700 text-white px-2 py-4 w-full rounded-lg"
                       onClick={addUser} // Call add when not editing
                     >
                       Add Data
