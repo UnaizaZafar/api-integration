@@ -29,7 +29,7 @@ const Index = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          const newId = data.id || Date.now();
+          const newId = Math.floor(Date.now()+Math.random());
           setuserData([...userData, { ...data, id: newId }]);
           setNewUserId(0);
           setNewTitle("");
@@ -57,25 +57,35 @@ const Index = () => {
       title: newTitle,
       body: newBody,
     };
-
-    fetch(`https://jsonplaceholder.typicode.com/posts/${editingId}`, {
-      method: "PUT",
-      body: JSON.stringify(updatedUser),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setuserData((prevState) =>
-          prevState.map((user) =>
-            user.id === editingId ? { ...user, ...data } : user
-          )
-        );
-        alert("Data Updated Successfully!");
-        clearForm();
+    const isLocal = editingId >= 1000000;
+    if (isLocal) {
+      setuserData((prevState) =>
+        prevState.map((user) =>
+          user.id === editingId ? { ...user, ...updatedUser } : user
+        )
+      );
+      alert("Local Data Updated Successfully!");
+      clearForm();
+    } else {
+      fetch(`https://jsonplaceholder.typicode.com/posts/${editingId}`, {
+        method: "PUT",
+        body: JSON.stringify(updatedUser),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
       })
-      .catch((error) => console.log("Error updating user:", error));
+        .then((response) => response.json())
+        .then((data) => {
+          setuserData((prevState) =>
+            prevState.map((user) =>
+              user.id === editingId ? { ...user, ...data } : user
+            )
+          );
+          alert("Data Updated Successfully!");
+          clearForm();
+        })
+        .catch((error) => console.log("Error updating user:", error));
+    }
   };
 
   const clearForm = () => {
@@ -87,14 +97,20 @@ const Index = () => {
 
   const deleteUser = (id) => {
     if (window.confirm("Are you sure you want to delete this row?")) {
-      fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
-        method: "DELETE",
-      })
-        .then((response) => response.json())
-        .then(() => {
-          setuserData((values) => values.filter((item) => item.id !== id));
-        });
-      alert("User Deleted Successfully!");
+      const isLocal = id >= 1000000;
+      if (isLocal) {
+        setuserData((values) => values.filter((item) => item.id !== id));
+        alert("Local Data Deleted Successfully!");
+      } else {
+        fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then(() => {
+            setuserData((values) => values.filter((item) => item.id !== id));
+            alert("User Deleted Successfully!");
+          });
+      }
     }
   };
 
@@ -145,25 +161,24 @@ const Index = () => {
                   placeholder="Enter Body Text"
                 />
               </td>
-              
-                <td>
-                  {editingId ? (
-                    <button
-                      className="bg-green-700 text-white w-full px-2 py-3 rounded-lg"
-                      onClick={updateUser} // Call update when editing
-                    >
-                      Update Data
-                    </button>
-                  ) : (
-                    <button
-                      className="bg-blue-700 text-white px-2 py-3 w-full rounded-lg"
-                      onClick={addUser} // Call add when not editing
-                    >
-                      Add Data
-                    </button>
-                  )}
-                </td>
-              
+
+              <td>
+                {editingId ? (
+                  <button
+                    className="bg-green-700 text-white w-full px-2 py-3 rounded-lg"
+                    onClick={updateUser} // Call update when editing
+                  >
+                    Update Data
+                  </button>
+                ) : (
+                  <button
+                    className="bg-blue-700 text-white px-2 py-3 w-full rounded-lg"
+                    onClick={addUser} // Call add when not editing
+                  >
+                    Add Data
+                  </button>
+                )}
+              </td>
             </tr>
             {userData.map((user, index) => (
               <tr key={index}>
