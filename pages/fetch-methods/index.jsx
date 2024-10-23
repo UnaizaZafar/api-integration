@@ -64,7 +64,7 @@ const Index = () => {
           user.id === editingId ? { ...user, ...updatedUser } : user
         )
       );
-      alert("Local Data Updated Successfully!");
+      alert("Data Updated Successfully!");
       clearForm();
     } else {
       fetch(`https://jsonplaceholder.typicode.com/posts/${editingId}`, {
@@ -100,7 +100,7 @@ const Index = () => {
       const isLocal = id >= 1000000;
       if (isLocal) {
         setuserData((values) => values.filter((item) => item.id !== id));
-        alert("Local Data Deleted Successfully!");
+        alert("Data Deleted Successfully!");
       } else {
         fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
           method: "DELETE",
