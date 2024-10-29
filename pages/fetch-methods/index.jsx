@@ -1,16 +1,26 @@
+export const getStaticProps = async () => {
+  const res =await fetch(`https://jsonplaceholder.typicode.com/posts`);
+  
+  const data = await res.json();
+  return {
+    props: {posts:data}
+  };
+};
+
 import { useState, useEffect } from "react";
-const Index = () => {
+import Link from "next/link";
+const Index = ({posts}) => {
+  console.log('posts',posts)
   let [userData, setuserData] = useState([]);
   let [newUserId, setNewUserId] = useState(0);
   let [newTitle, setNewTitle] = useState("");
   let [newBody, setNewBody] = useState("");
-
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json())
-      .then((data) => setuserData(data));
-  }, []);
-  console.log("users Data", userData);
+  // useEffect(() => {
+  //   fetch(`https://jsonplaceholder.typicode.com/posts`)
+  //     .then((response) => response.json())
+  //     .then((data) => setuserData(data));
+  // }, []);
+  // console.log("users Data", userData);
   const addUser = () => {
     const userId = newUserId;
     const title = newTitle.trim();
@@ -29,7 +39,7 @@ const Index = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          const newId = Math.floor(Date.now()+Math.random());
+          const newId = Math.floor(Date.now() + Math.random());
           setuserData([...userData, { ...data, id: newId }]);
           setNewUserId(0);
           setNewTitle("");
@@ -180,11 +190,13 @@ const Index = () => {
                 )}
               </td>
             </tr>
-            {userData.map((user, index) => (
-              <tr key={index}>
+            {posts?.map((user, index) => (
+              <tr key={index} className="hover:bg-gray-200">
                 <td className="py-3 italic">{index + 1}</td>
                 <td className="text-center">{user.userId}</td>
-                <td>{user.title}</td>
+                <td >
+                  <Link href={`/fetch-methods/${user.id}`}>{user.title}</Link>
+                </td>
                 <td>{user.body}</td>
                 <td className="flex gap-2 p-1 ">
                   <button
