@@ -194,9 +194,9 @@ const Index = ({posts}) => {
               <tr key={index} className="hover:bg-gray-200">
                 <td className="py-3 italic">{index + 1}</td>
                 <td className="text-center">{user.userId}</td>
-                <td >
-                  <Link href={`/fetch-methods/${user.id}`}>{user.title}</Link>
-                </td>
+                <Link href={`/fetch-methods/${user.id}`}> <td >
+                  {user.title}
+                </td></Link>
                 <td>{user.body}</td>
                 <td className="flex gap-2 p-1 ">
                   <button
