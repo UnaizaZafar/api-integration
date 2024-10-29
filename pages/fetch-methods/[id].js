@@ -28,15 +28,15 @@ const PostDetails = ({post}) => {
       <h1 className="text-center font-bold text-5xl">Post no. {post.id}</h1>
       <table className=" table-auto w-2/3 place-self-center">
         <tbody>
-            <tr className="border border-black divide-x divide-black">
+            <tr className="border border-gray-800 divide-x divide-gray-800">
                 <td className="font-semibold text-xl px-3">UserId</td>
                 <td className=" text-lg px-3">{post.userId}</td>
             </tr>
-            <tr className="border border-black divide-x divide-black">
+            <tr className="border border-gray-800 divide-x divide-gray-800">
                 <td className="font-semibold text-xl px-3">Title</td>
                 <td className=" text-lg px-3">{post.title}</td>
             </tr>
-            <tr className="border border-black divide-x divide-black">
+            <tr className="border border-gray-800 divide-x divide-gray-800">
                 <td className="font-semibold text-xl px-3">Body</td>
                 <td className=" text-lg px-3">{post.body}</td>
             </tr>

@@ -146,7 +146,7 @@ const Index = ({posts}) => {
               <td></td>
               <td>
                 <input
-                  className="border rounded-lg text-sm px-2 py-3 w-full"
+                  className="border rounded-lg text-black text-sm px-2 py-3 w-full"
                   type="number"
                   value={newUserId}
                   onChange={(e) => setNewUserId(e.target.value)}
@@ -155,7 +155,7 @@ const Index = ({posts}) => {
               </td>
               <td>
                 <input
-                  className="border rounded-lg text-sm px-2 py-3 w-full"
+                  className="border rounded-lg text-black text-sm px-2 py-3 w-full"
                   type="text"
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
@@ -164,7 +164,7 @@ const Index = ({posts}) => {
               </td>
               <td>
                 <input
-                  className="border rounded-lg text-sm px-2 py-3 w-full"
+                  className="border rounded-lg text-black text-sm px-2 py-3 w-full"
                   type="text"
                   value={newBody}
                   onChange={(e) => setNewBody(e.target.value)}
@@ -191,7 +191,7 @@ const Index = ({posts}) => {
               </td>
             </tr>
             {posts?.map((user, index) => (
-              <tr key={index} className="hover:bg-gray-200">
+              <tr key={index} className="hover:bg-gray-800 hover:text-white">
                 <td className="py-3 italic">{index + 1}</td>
                 <td className="text-center">{user.userId}</td>
                 <Link href={`/fetch-methods/${user.id}`}> <td >
