@@ -1,11 +1,11 @@
-export const getStaticProps = async () => {
-  const res =await fetch(`https://jsonplaceholder.typicode.com/posts`);
+// export const getStaticProps = async () => {
+//   const res =await fetch(`https://jsonplaceholder.typicode.com/posts`);
   
-  const data = await res.json();
-  return {
-    props: {posts:data}
-  };
-};
+//   const data = await res.json();
+//   return {
+//     props: {posts:data}
+//   };
+// };
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -15,12 +15,12 @@ const Index = ({posts}) => {
   let [newUserId, setNewUserId] = useState(0);
   let [newTitle, setNewTitle] = useState("");
   let [newBody, setNewBody] = useState("");
-  // useEffect(() => {
-  //   fetch(`https://jsonplaceholder.typicode.com/posts`)
-  //     .then((response) => response.json())
-  //     .then((data) => setuserData(data));
-  // }, []);
-  // console.log("users Data", userData);
+  useEffect(() => {
+    fetch(`https://jsonplaceholder.typicode.com/posts`)
+      .then((response) => response.json())
+      .then((data) => setuserData(data));
+  }, []);
+  console.log("users Data", userData);
   const addUser = () => {
     const userId = newUserId;
     const title = newTitle.trim();
@@ -190,7 +190,7 @@ const Index = ({posts}) => {
                 )}
               </td>
             </tr>
-            {posts?.map((user, index) => (
+            {userData?.map((user, index) => (
               <tr key={index} className="hover:bg-gray-800 hover:text-white">
                 <td className="py-3 italic">{index + 1}</td>
                 <td className="text-center">{user.userId}</td>
